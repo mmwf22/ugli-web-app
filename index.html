@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Die absolut hässlichste Website</title>
     <style>
-        /* Kachel-Hintergrund mit Farbwechsel */
+        /* Kachel-Hintergrund mit unabhängig wechselnden Farben */
         body {
             margin: 0;
             padding: 0;
@@ -14,14 +14,26 @@
             font-family: 'Comic Sans MS', cursive, sans-serif;
             color: white;
             text-align: center;
-            background-image: url('https://media.tenor.com/4ZiyrZigXgYAAAAM/spinning-cat.gif');
-            background-size: 100px 100px;
-            animation: tileColorChange 3s infinite linear;
+            display: grid;
+            grid-template-columns: repeat(10, 10%);
+            grid-template-rows: repeat(10, 10%);
+        }
+
+        .tile {
+            width: 100%;
+            height: 100%;
+            animation: tileColorChange 3s infinite alternate;
         }
 
         @keyframes tileColorChange {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
+            0% { background-color: red; }
+            14% { background-color: orange; }
+            28% { background-color: yellow; }
+            42% { background-color: green; }
+            57% { background-color: blue; }
+            71% { background-color: indigo; }
+            85% { background-color: violet; }
+            100% { background-color: red; }
         }
 
         /* Flackernder, sich drehender Text */
@@ -29,6 +41,9 @@
             font-size: 6rem;
             text-shadow: 0 0 20px #FF00FF, 0 0 40px #FF00FF;
             animation: flickerText 0.1s infinite alternate, spinText 2s infinite linear;
+            position: absolute;
+            width: 100%;
+            top: 20%;
         }
 
         @keyframes flickerText {
@@ -48,6 +63,9 @@
             color: cyan;
             text-shadow: 0 0 10px cyan;
             animation: shakeText 0.2s infinite alternate;
+            position: absolute;
+            width: 100%;
+            top: 40%;
         }
 
         @keyframes shakeText {
@@ -66,11 +84,14 @@
             text-shadow: 0 0 10px red;
             animation: randomMove 2s infinite alternate;
             position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, 0);
         }
 
         @keyframes randomMove {
-            0% { top: 20%; left: 30%; }
-            100% { top: 70%; left: 80%; }
+            0% { transform: translate(-50%, 0) rotate(0deg); }
+            100% { transform: translate(-50%, 0) rotate(360deg); }
         }
 
         button:hover {
@@ -78,29 +99,25 @@
             background: magenta;
             color: yellow;
         }
-
-        /* Animierte GIFs */
-        .gif-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-        }
     </style>
 </head>
 <body>
+    <!-- Kachel-Hintergrund -->
+    <script>
+        for (let i = 0; i < 100; i++) {
+            let tile = document.createElement('div');
+            tile.classList.add('tile');
+            tile.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            tile.style.animationDelay = (Math.random() * 3) + 's';
+            document.body.appendChild(tile);
+        }
+    </script>
+
     <h1>Augenkrebs Deluxe!</h1>
     <p>Warum sollte eine Website Sinn ergeben?</p>
 
     <!-- Zufällig bewegender Button -->
     <button onclick="playSound()">Drück mich!</button>
-
-    <!-- GIFs für zusätzlichen Wahnsinn -->
-    <div class="gif-container">
-        <img src="https://media.tenor.com/ZTPBu-nVXscAAAAM/dancing-baby.gif" alt="Dancing Baby">
-    </div>
 
     <script>
         function playSound() {
