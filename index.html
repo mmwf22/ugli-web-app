@@ -5,18 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Die absolut hässlichste Website</title>
     <style>
-        /* Animierter, sich ständig ändernder Regenbogen-Hintergrund */
-        @keyframes rainbowBackground {
-            0% { background: red; }
-            14% { background: orange; }
-            28% { background: yellow; }
-            42% { background: green; }
-            57% { background: blue; }
-            71% { background: indigo; }
-            85% { background: violet; }
-            100% { background: red; }
-        }
-
+        /* Kachel-Hintergrund mit Farbwechsel */
         body {
             margin: 0;
             padding: 0;
@@ -24,8 +13,15 @@
             overflow: hidden;
             font-family: 'Comic Sans MS', cursive, sans-serif;
             color: white;
-            animation: rainbowBackground 5s infinite linear;
             text-align: center;
+            background-image: url('https://media.tenor.com/4ZiyrZigXgYAAAAM/spinning-cat.gif');
+            background-size: 100px 100px;
+            animation: tileColorChange 3s infinite linear;
+        }
+
+        @keyframes tileColorChange {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
         }
 
         /* Flackernder, sich drehender Text */
@@ -82,6 +78,16 @@
             background: magenta;
             color: yellow;
         }
+
+        /* Animierte GIFs */
+        .gif-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+        }
     </style>
 </head>
 <body>
@@ -90,6 +96,11 @@
 
     <!-- Zufällig bewegender Button -->
     <button onclick="playSound()">Drück mich!</button>
+
+    <!-- GIFs für zusätzlichen Wahnsinn -->
+    <div class="gif-container">
+        <img src="https://media.tenor.com/ZTPBu-nVXscAAAAM/dancing-baby.gif" alt="Dancing Baby">
+    </div>
 
     <script>
         function playSound() {
