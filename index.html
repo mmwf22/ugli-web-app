@@ -99,6 +99,19 @@
             background: magenta;
             color: yellow;
         }
+
+        /* Wandern von Dickbutt, Elefant und Gorilla */
+        .walker {
+            position: absolute;
+            width: 150px;
+            top: 50%;
+            animation: walkAcross 10s infinite linear;
+        }
+
+        @keyframes walkAcross {
+            0% { left: -200px; }
+            100% { left: 110%; }
+        }
     </style>
 </head>
 <body>
@@ -118,6 +131,11 @@
 
     <!-- Zufällig bewegender Button -->
     <button onclick="playSound()">Drück mich!</button>
+
+    <!-- Dickbutt, Elefant und Gorilla -->
+    <img class="walker" src="https://i.kym-cdn.com/photos/images/newsfeed/000/117/422/dickbutt.gif" style="top: 30%; animation-duration: 8s;">
+    <img class="walker" src="https://media.tenor.com/TWlmcH83qCoAAAAM/elephant.gif" style="top: 50%; animation-duration: 12s;">
+    <img class="walker" src="https://media.tenor.com/NnqotWONSTIAAAAM/gorilla-dance.gif" style="top: 70%; animation-duration: 15s;">
 
     <script>
         function playSound() {
